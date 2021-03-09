@@ -1,0 +1,47 @@
+https://github.com/spring-projects/sts4/wiki/Previous-Versions
+-------------------------------------------------------
+
+
+Converting a dynamic project into  maven project
+------------------------------------------------------------------------------------------------------------
+Step 1: Select your Dynamic Web Project and hit the Right Click button.
+Step 2: Now click on the Configure » Covert to Maven Project.
+Step 3: After clicking on Convert to Maven Project, a new pop-up window will open. ...
+Step 4: Hit the Finish button. ...
+Step 5: Project structure of Maven Project.
+Step 6: Done.
+
+-----------------------------------------------------------------------------------------------------------
+Q While creating the Spring web mvc can we exclude the xml file for configuration and just work on 
+  annotations for configuration?
+Ans: Yes it can be done.
+
+For This kind of approach we will create two classes in place of servlet-name.xml and web.xml.
+So these xml files are no longer required.
+
+ * WebConfig.java  ( servlet-name.xml)
+ * HelloWorldInitializer (web.xml)
+--------------------------------------------------------------------------------------------------------------
+
+What are the changes from yesterday's code?
+
+1) We added two configuration java files.
+2) We deleted the web.xml.
+3) After deleting the web.xml , pom.xml was showing the error to resolve that we added a property.
+  <properties>
+  <failOnMissingWebXml>false </failOnMissingWebXml>
+  </properties> 
+---------------------------------------------------------------------------------------------------------------
+When we connect at 2pm, the discussion more towards spring boot.
+Spring MVC
+Spring Boot implementing MVC.
+JPA/Hibernate/JDBC
+------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
