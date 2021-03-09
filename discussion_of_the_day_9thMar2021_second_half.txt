@@ -107,6 +107,179 @@ public class HelloWorld {
 
 -------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------
+Passing parameters/data from the jsp file.
+insert.jsp
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+   <table>
+    <form action="bookadd" method="post">
+       Book ID<input type="text" name="id">
+       Book Title<input type="text" name="title">
+       <input type="submit"/>  
+    </form>   
+     </table>
+</body>
+</html>
+
+
+The following kind of writing is required when we are not using EL ( Expression
+Language )
+
+success.jsp
+
+<%@ page import="com.demo.cts.model.Book" language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" isELIgnored=false %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+    Book Added!!!!!!!!
+    The details are as follows:-
+     <% Book book=(Book)request.getAttribute("bookDetails"); %>
+    <%=book.getBookId() %>
+    <%=book.getBookTitle() %> 
+    
+</body>
+</html>
+
+
+This is after enabling the EL .
+
+<%@ page import="com.demo.cts.model.Book" language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" isELIgnored=false %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+    Book Added!!!!!!!!
+   ${bookdetails.bookId}
+   ${bookdetails.bookTitle} 
+ </body>
+</html>
+
+-----------------------------------
+
+controller
+
+BookController.java
+
+package com.demo.cts.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.demo.cts.model.Book;
+
+@Controller
+public class BookController {
+
+	
+	@GetMapping("/")
+	public String insertBook()
+	{
+		return "insert";
+	}
+	
+	@PostMapping("/bookadd")
+	public String bookAdd(Model map, @RequestParam int id, @RequestParam String title)
+	{
+	      Book book=new Book(); // model object
+	      book.setBookId(id);   // we are storing the data which is passed as parameters
+	      book.setBookTitle(title);
+	      System.out.println(book.getBookId());
+	      System.out.println(book.getBookTitle());
+	      System.out.println(book);
+	      map.addAttribute("bookdetails", book);
+	      return "success";
+	      
+	}
+}
+
+------------------------------
+model
+
+Book.java
+
+package com.demo.cts.model;
+
+public class Book {
+
+	private int bookId;
+	private String bookTitle;
+	public Book() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Book(int bookId, String bookTitle) {
+		super();
+		this.bookId = bookId;
+		this.bookTitle = bookTitle;
+	}
+	public int getBookId() {
+		return bookId;
+	}
+	public void setBookId(int bookId) {
+		this.bookId = bookId;
+	}
+	public String getBookTitle() {
+		return bookTitle;
+	}
+	public void setBookTitle(String bookTitle) {
+		this.bookTitle = bookTitle;
+	}
+	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + bookId;
+		result = prime * result + ((bookTitle == null) ? 0 : bookTitle.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Book other = (Book) obj;
+		if (bookId != other.bookId)
+			return false;
+		if (bookTitle == null) {
+			if (other.bookTitle != null)
+				return false;
+		} else if (!bookTitle.equals(other.bookTitle))
+			return false;
+		return true;
+	}
+	@Override
+	public String toString() {
+		return "Book [bookId=" + bookId + ", bookTitle=" + bookTitle + "]";
+	}
+	
+	
+	
+}
+--------------------------------------------------------------------------------------------------------------
 
 
 
