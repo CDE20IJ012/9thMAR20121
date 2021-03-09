@@ -1,0 +1,153 @@
+
+
+https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html
+
+Advantage of FrontController is 
+one entry point for the entire application.
+
+Disadvantage of FrontController is
+when we go huge requests are being made through a single entry point.
+-------------------------------------------------------------------------------
+FrontController is a servlet and it is called as FrontController because
+this servlet first intercepts any request , then any other activity 
+happens in Spring MVC.
+
+The name of the FrontController used in SpringMVC is DispatcherServlet.
+The FQN org.springframework.web.servlet.DispatcherServlet.
+
+-------------------------------------------------------------------------
+
+FrontController ( already part of Spring MVC api we don't have to write 
+the code for the FrontController) 
+
+Just Included the information of this FrontController within the deployment
+descriptor ( web.xml ). 
+
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  
+   <servlet>
+       <servlet-name>dispatcher</servlet-name>
+       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+          <servlet-name>dispatcher</servlet-name>
+           <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+  
+</web-app>
+
+
+
+[Note: / in url pattern means talking about the root of the application.
+example: http://localhost:8080/springmvdemo2/
+
+
+----------------------------------------------------------
+for using Dispatcher Servlet just go for updating the pom.xml for the
+dependency spring-webmvc.
+
+------------------------------------------------------------------
+3. In our current example it will be.  dispatcher-servlet.xml and we need
+   put the dispatcher-servlet.xml in WEB-INF folder. In WEB-INF folder
+   we already have web.xml. We create this file by right click on
+   WEB-INF folder and choosing the new ------> others---->spring---->
+   bean configuration file.
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+<bean id="viewresolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+
+ <property name="prefix" value="WEB-INF/jsps/"/>
+ <property name="suffix" value=".jsp"/>
+</bean>
+
+</beans>
+
+------------------------------------------------------------------------------------
+Design the model
+
+package com.stackroute.model;
+
+public class Greet {
+private String message;
+
+public String getMessage() {
+	return message;
+}
+
+public void setMessage(String message) {
+	this.message = message;
+}
+
+@Override
+public String toString() {
+	return "Greet [message=" + message + "]";
+}
+
+}
+
+-------------------------------------------------------------------------
+
+
+Design the controller ( which will contain handler methods ).
+This controller classes are with the annotation @Controller
+
+@Controller
+// http://localhost:8080/springmvdemo2
+public class HelloController {
+
+	@RequestMapping("/")
+	public String greetHandler(Model model)
+	{
+		Greet greet=new Greet();
+		greet.setMessage("Hi");
+		model.addAttribute("message", greet);
+		return "hello";
+	}
+	
+}
+
+
+--------------------------------------------------------------------------------
+
+hello.jsp
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+      ${message}
+</body>
+</html>
+
+
+
+
+     
+
+
+
+
+
+
+
+
+

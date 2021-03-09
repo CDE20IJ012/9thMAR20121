@@ -1,0 +1,96 @@
+HTTP Protocol is used to access the web application.
+HTTP Protocol do have some methods
+like
+GET--------> Read from the resource
+POST ------> To add resource
+PUT -------> to update resource
+HEAD ------> To read or store header information of the resource
+DELETE-----> Delete the resource
+
+
+ http://localhost:8080/servletdemo1
+
+-----------------------------------------------------------------
+When we design a servlet , we inherit the class called HttpServlet.
+
+Why we inherit the class called HttpServlet?
+
+Ans-----> Because the protocol which will be used to access this
+resource ( Resource here is the Servlet ) , is http protocol and
+at the same time we want to convey that my class is not a simple
+class but it is a Servlet ( IS A RELATIONSHIP is achieved through
+inheritance).
+
+
+
+
+  public class HelloServlet extends HttpServlet 
+  {
+
+    public void doGet(HttpSe
+     {
+
+
+     }
+   
+
+
+  }
+
+
+--------------------------------------------------
+
+HttpServlet class is having methods like doPost, doGet etc.
+
+--------------------------------------------------------------------------
+
+Where we find the difference while writing the JSP and Servlet code?
+
+JSP is main structure is HTML and wherever we require programming make
+use of java code within some predefined tags like scriptlet, declaration
+expression tags. So we find JSP is good for presenting something.
+
+    index.jsp
+   
+    <html>
+     <body>
+      <% String name="Rajesh"; %>
+      <%=name%>
+     </body>
+    </html>
+
+But when we see Servlet code it is more towards writing Java code and
+within the java code we are putting HTML. So Servlet is not good for
+presenting something. 
+
+-----------------------------------------------------------------------------
+MVC ----> Model View Controller
+
+Model -----> Student, Employee, Customer, Book
+View------> JSP/HTML is considered as View
+Controller----> Servlet as a controller , dao is a helper to the controller
+-------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

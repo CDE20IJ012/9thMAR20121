@@ -1,0 +1,140 @@
+https://github.com/spring-projects/sts4/wiki/Previous-Versions
+https://www.codejava.net/frameworks/spring-boot/spring-boot-crud-example-with-spring-mvc-spring-data-jpa-thymeleaf-hibernate-mysql
+spring boot and jsp crud
+https://www.springboottutorial.com/creating-web-application-with-spring-boot
+https://mkyong.com/spring-boot/spring-boot-hello-world-example-jsp/
+
+* Spring MVC
+    Web application
+    M ===> Model
+    V ===> View
+    C ===> Controller
+-------------------------------------------------------------------------------------------------
+    Front Controller takes the controller to other controller.
+-------------------------------------------------------------------------------------------------------------
+Can we go for designing Web application by following MVC design pattern 
+with the help of Servlet and JSP only.
+
+If it is possible to design with JSP and Servlets why we are going for Spring MVC?
+
+
+* Loosely coupled code in Spring MVC which we are achieving through DI. 
+
+------------------------------------------------------------------------------------------------------------
+  In Spring MVC we have 2 design patterns:-
+  * Front Controller ( DispatcherServlet )
+  * MVC 
+----------------------------------------------------------------------------------------------------------
+
+IDE used ====> Eclipse/STS 
+
+ Spring Tool Suite
+----------------------------------------------------------------------------------------------------------
+
+Spring MVC ======> 
+
+*To start with : 
+   ** We create a maven web project ( archetype of web-app)
+* Let us concentrate on the structure of the project of the project for few minutes    
+* web.xml ( What is the role of the web.xml ?  )
+    Deployement descriptor which is carrying the information related to the web project.
+
+   <!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+     <servlet-name>hello</servlet-name>
+     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    </servlet>
+  <servlet-mapping>
+   <servlet-name>hello</servlet-name>
+   <url-pattern>/</url-pattern>
+  </servlet-mapping>
+</web-app>
+
+
+
+http://localhost:8080/webproject1
+( We are in the root of the project )
+
+Whenever we are making a request for our web project , the server will look for 
+either web.xml or annotations for the configuration. In the current example it looks for 
+web.xml and finds DispatcherServlet. To get DispatcherServlet which is a predefined servlet and
+part of spring web-mvc. So we can get this DispatcherServlet related class in our application by
+including the following dependency in the pom.xml
+
+
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-webmvc</artifactId>
+    <version>5.1.5.RELEASE</version>
+</dependency>
+
+--------------------------------------------------
+
+creating  a configuration file ( .xml) where the file name is something
+   servletname-servlet.xml
+
+  In our case as the servlet name is hello so it goes as 
+
+   hello-servlet.xml
+
+    <?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+<context:component-scan base-package="com.controller"></context:component-scan>
+<bean id="viewresolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<property name="prefix" value="WEB-INF/views/"></property>
+<property name="suffix" value=".jsp"></property>
+</bean>
+</beans>
+
+-------------------------------------------------------------------------------------------------------------
+Go for user defined controller where you write the handler method/methods.
+
+package com.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HelloController {
+
+	// HAandler method which takes the control to the JSP files
+	// while mention the JSP file name we need to just write the 
+	// first part of the file name
+	
+	
+	
+	@GetMapping("/")
+	public String greet()
+	{
+		  return "index";
+	}
+}
+
+
+------------------------------
+http://localhost:8080/webproject1
+
+
+   Hello World!!!!
+
+
+
+
+    
+
+   FrontController 
+   
+
+
+
+  
+
+

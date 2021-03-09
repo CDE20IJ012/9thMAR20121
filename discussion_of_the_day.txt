@@ -1,0 +1,125 @@
+Important links
+
+ttps://docs.elementor.com/article/595-difference-between-px-em-rem-percentage-vw-vh
+https://www.sitepoint.com/css-viewport-units-quick-start/
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_box-sizing3
+https://bitsofco.de/responsive-design-viewport/
+*https://getbootstrap.com/docs/4.0/utilities/spacing/
+https://o7planning.org/en/12035/bootstrap-spacing-tutorial
+https://getbootstrap.com/docs/4.0/content/images/
+https://getbootstrap.com/docs/4.0/utilities/display/
+https://fontawesome.com/v4.7.0/icon/facebook-square
+https://www.w3.org/WAI/PF/aria/states_and_properties#state_prop_def
+https://mdbootstrap.com/snippets/jquery/mdbootstrap/883073
+https://www.nomensa.com/blog/2005/what-screen-reader
+https://css-tricks.com/when-using-important-is-the-right-choice/
+https://developers.google.com/fonts/docs/getting_started
+https://getbootstrap.com/docs/4.0/utilities/display/
+https://getbootstrap.com/docs/4.0/content/typography/
+https://popper.js.org/
+
+
+
+1) Responsive Web Designing
+2) meta tag name viewport
+3) The example which I shared , 
+   * navbar
+   * carousel
+   * Jumbotron
+4) semantic tags :-
+   header,footer
+5) font-awesome 
+ Q: Various icons related to social media and more
+ A: We have to mention the CSS with the help of CDN link
+ https://fontawesome.com/v4.7.0/icon/facebook-square
+ Q: How come I will know what to write to get those icons/small images
+ A: The site itself provided the info
+  
+example
+   <i class="fas fa-user-nurse"></i>
+ Q Can we go for customising these icons like resizing and all:
+ A: Yes , we can by mentioning or making a change by writing our own styling.
+
+.fa{
+    font-size: 2em !important;
+    color:#fff;
+    padding:0.2em;
+}
+ 
+Q What is the significance of writing !important?
+
+   https://css-tricks.com/when-using-important-is-the-right-choice/
+  a: !important is making that CSS rule overriding the usual priority one.
+ 
+   
+
+-----------------------------------------------------------
+What will be your task for the day?
+1) All the 16 participants can have their own plan for designing a page.
+   For example I have shared a site which is related to "Tours and Travels".
+   You can go for the sites like
+    * Online  book selling
+    * Online artifacts 
+    * Online shopping 
+
+Just go for a link called online registration( stacked bootstrap form):-
+  firstname    textbox
+  middlename   textbox
+  lastname     textbox
+  emailid      email/textbox
+  mobilenumber textbox
+  password
+  verify password
+  date-of-birth ===> datetimepicker
+  gender =====> radio  button
+  Interest ====> dropdown
+         
+  register===> button
+  reset======> reset   
+
+In the navbar itself go for login form ( inline bootstrap form ):-
+   emailid  
+   password 
+   login =====> button
+---------------------------------------------------------------------------------------------------------------
+
+Q CSS padding and margin used in bootstrap. So do we go for any predefined classes for that ? 
+Ans yes.   
+https://getbootstrap.com/docs/4.0/utilities/spacing/
+
+Q Do we have classes for font size and all
+and yes.
+https://getbootstrap.com/docs/4.0/content/typography/
+
+---------------------------------------------------------------------------------------------------------------
+1) Bootstrap
+2) Hibernate/JPA/Hibernate Spring
+
+3) Data Structures
+4) Design Principles/Patterns
+5) Sonarqube/lombok
+6) SLf4J  
+=============================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       ( social media related icons )
+6) fonts googleapis
+----------------------------------------------------------------------------
+
+
+         
+
+    
