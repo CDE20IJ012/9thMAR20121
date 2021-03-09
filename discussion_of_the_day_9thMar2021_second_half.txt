@@ -1,0 +1,115 @@
+Spring boot and MVC impementation
+-------------------------------------------------------
+
+Two types of controllers:-
+
+* Controller  ( Where we go for handler method/methods
+which are mapped to some display. In our case the 
+display is in the form of jsp)
+* RestController ( In RestController we don't concentrate more on the view because in that case for the view we have other services which are totally 
+independent application and are designed with 
+angular/ReactJS).
+
+
+---------------------------------------------------
+Let us see one examle where we design RestController
+and display a string "Hello World!!!";
+
+* For that let us follow the following steps"
+
+1) File ====> New===> Spring Starter Project
+2) Select for the dependency in the dialog box selected as web
+    web. ( we dont have to add any dependency from the site called maven repository )
+     	        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+3) We created a controller and we were careful to create the package so if the class with main 
+   method which is executing the Spring Boot application is within the package com.demo
+   We try to keep the controller within com.demo.package ( So we try to keep the controller within the
+   sub package of the package where the class with main method is in ).  
+ 
+package com.demo.cts.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloWorld {
+
+	@GetMapping("/")
+	public String greet()
+	{
+		return "Hello World!!!!";
+	}
+}
+----------------------------------------------------------------------------------------------------------
+Spring Boot MVC 
+So in this example will have hello.jsp which will be called by the Controller. 
+The controller will @Controller and not the @RestController.
+1) File ====> New===> Spring Starter Project
+2) Select for the dependency in the dialog box called New Spring Starter Project Dependencies.
+   Go for selecting Spring Web
+3) Here in pom.xml we have add a dependency so that the JSPs are interpreted.
+   <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+    <!-- This is not a starter project so get the dependency from maven repository site -->		
+	<dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+        </dependency>
+
+
+4) Let us create our jsp file and get it stored. 
+   So it has to be within src===> main ===> just create a folder with the name webapp ( wenapp folder
+   won't be there). Within webapp create a folder WEB-INF.
+5) create a folder with the name views/jsps/pages.
+6) Now create the jsp pages and keep in the folder with the name views/jsps/pages.
+We created hello.jsp within
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+    Hello World!!!!
+</body>
+</html>
+7) Let us create a controller ===> @Controller
+
+package com.demo.cts.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HelloWorld {
+
+	
+	@GetMapping("/")
+	public String greet()
+	{
+		return "hello";
+	}
+}
+8) Update application.properties 
+    server.port=9999
+    spring.mvc.view.prefix=/WEB-INF/pages/
+    spring.mvc.view.suffix=.jsp
+
+
+
+-------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+
+
+
+
+
